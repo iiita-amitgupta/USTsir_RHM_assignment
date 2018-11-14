@@ -1,0 +1,66 @@
+/********************************************************************************
+ *         Finding Optimal Cost for Constructing Binary Search Tree             *
+ * ******************************************************************************/
+
+
+
+#include <stdio.h>
+#include <limits.h>
+#include <math.h>
+
+int OptimalCost(int arr[], int m, int n, int level);
+int min(int a, int b);
+
+int main()
+{
+	int i;
+	int n;
+	int value;
+
+	printf("Enter number of inputs want to enter: ");
+	scanf("%d", &n);
+
+	int arr[n];
+	printf("Enter the values: ");
+	for(i = 0; i < n; i++){
+		scanf("%d", &value);
+		arr[i] = value;
+	}
+
+	value = OptimalCost(arr, 0, n - 1, 1);
+
+	printf("The Optimal Cost for constructing the BST is: %d\n", value);
+
+	return 0;
+}
+
+int OptimalCost(int arr[], int m, int n, int level)
+{
+	int i;
+	int optimalcost = INT_MAX;
+	int left_oc;
+	int right_oc;
+	int cost;
+
+	if(n < m){
+		return 0;
+	}
+
+	for(i = m; i < n+1; i++){
+		left_oc = OptimalCost(arr, m, i-1, level+1);
+		right_oc = OptimalCost(arr, i+1, n, level+1);
+		cost = arr[i]*level + left_oc + right_oc;
+		optimalcost = min(optimalcost, cost);
+	}
+
+	return optimalcost;
+}
+
+int min(int a, int b)
+{
+	if(a > b){
+		return b;
+	} else {
+		return a;
+	}
+}
