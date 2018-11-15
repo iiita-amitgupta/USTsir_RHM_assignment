@@ -8,6 +8,18 @@
 #include <limits.h>
 
 int sum(int freq[], int i, int j);
+int OptimalBST(int keys[], int freq[], int n);
+
+int main()
+{
+	int keys[] = {10, 12, 20};
+	int freq[] = {34, 8, 50};
+	int n = sizeof(keys)/sizeof(keys[0]);
+
+	printf("Cost of Optimal BST is %d ",OptimalBST(keys, freq, n));
+
+	return 0;
+}
 
 int OptimalBST(int keys[], int freq[], int n)
 { 
@@ -50,15 +62,3 @@ int sum(int freq[], int i, int j)
 
 	return s;
 } 
-
-
-int main()
-{
-	int keys[] = {10, 12, 20};
-	int freq[] = {34, 8, 50};
-	int n = sizeof(keys)/sizeof(keys[0]);
-
-	printf("Cost of Optimal BST is %d ",OptimalBST(keys, freq, n));
-
-	return 0;
-}
