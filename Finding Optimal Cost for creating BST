@@ -12,11 +12,30 @@ int OptimalBST(int keys[], int freq[], int n);
 
 int main()
 {
-	int keys[] = {10, 12, 20};
-	int freq[] = {34, 8, 50};
-	int n = sizeof(keys)/sizeof(keys[0]);
+	int i;
+	int n;
+	int value;
 
-	printf("Cost of Optimal BST is %d ",OptimalBST(keys, freq, n));
+	printf("Enter number of inputs want to enter: ");
+	scanf("%d", &n);
+
+	int arr[n];
+	int freq[n];
+	printf("Enter the values: ");
+	for(i = 0; i < n; i++) {
+		scanf("%d", &value);
+		arr[i] = value;
+	}
+
+	printf("Enter the frequencies of the values: ");
+	for(i = 0; i < n; i++) {
+		scanf("%d", &value);
+		freq[i] = value;
+	}
+
+	value = OptimalBST(arr, freq, n);
+
+	printf("The Optimal Cost for constructing the BST is: %d\n", value);
 
 	return 0;
 }
